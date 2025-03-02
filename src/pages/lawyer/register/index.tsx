@@ -11,10 +11,21 @@ const LawyerRegister = () => {
   // 处理表单提交
   const handleSubmit = async (values: Omit<LawyerInfo, 'id' | 'status' | 'createdAt' | 'updatedAt'>) => {
     try {
-      // TODO: 实现律师注册逻辑
+      const response = await fetch('/api/lawyer/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+
+      if (!response.ok) {
+        throw new Error('注册申请提交失败')
+      }
+
       message.success('注册申请提交成功，请等待审核')
     } catch (error) {
-      message.error('注册申请提交失败')
+      message.error('注册申请提交失败：' + (error instanceof Error ? error.message : '未知错误'))
     }
   }
 

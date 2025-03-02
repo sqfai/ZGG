@@ -17,11 +17,22 @@ const Register = () => {
   // 处理注册表单提交
   const handleSubmit = async (values: RegisterForm) => {
     try {
-      // TODO: 实现注册逻辑
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+
+      if (!response.ok) {
+        throw new Error('注册失败')
+      }
+
       message.success('注册成功')
       navigate('/login')
     } catch (error) {
-      message.error('注册失败')
+      message.error('注册失败：' + (error instanceof Error ? error.message : '未知错误'))
     }
   }
 

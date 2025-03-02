@@ -12,8 +12,7 @@ export default defineConfig({
     logLevel: 'error',
     legalComments: 'none',
     jsx: 'automatic',
-    loader: 'jsx',
-    banner: '"use client";'
+    loader: 'jsx'
   },
   resolve: {
     alias: {
