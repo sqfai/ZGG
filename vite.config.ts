@@ -13,9 +13,7 @@ export default defineConfig({
     legalComments: 'none',
     jsx: 'automatic',
     loader: 'jsx',
-    banner: {
-      js: '"use client";'
-    }
+    banner: '"use client";'
   },
   resolve: {
     alias: {
