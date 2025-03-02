@@ -12,9 +12,7 @@ export default defineConfig({
     logLevel: 'error',
     legalComments: 'none',
     jsx: 'automatic',
-    loader: {
-      '.js': 'jsx'
-    },
+    loader: 'jsx',
     banner: {
       js: '"use client";'
     }
