@@ -5,6 +5,20 @@ import { resolve } from 'path'
 export default defineConfig({
   base: '/',
   plugins: [react()],
+  esbuild: {
+    supported: {
+      'top-level-await': true
+    },
+    logLevel: 'error',
+    legalComments: 'none',
+    jsx: 'automatic',
+    loader: {
+      '.js': 'jsx'
+    },
+    banner: {
+      js: '"use client";'
+    }
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
@@ -27,14 +41,16 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom', 'antd']
         }
       }
-    }
+    },
+    target: 'esnext',
+    cssTarget: 'chrome61'
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'antd', '@ant-design/icons']
