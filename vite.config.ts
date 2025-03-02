@@ -12,7 +12,14 @@ export default defineConfig({
     logLevel: 'error',
     legalComments: 'none',
     jsx: 'automatic',
-    loader: 'jsx'
+    loader: 'tsx',
+    target: 'es2020',
+    tsconfigRaw: {
+      compilerOptions: {
+        jsx: 'preserve',
+        jsxImportSource: 'react'
+      }
+    }
   },
   resolve: {
     alias: {
